@@ -1,2 +1,2 @@
-# TrashSorting_ARGame
- Trash Sorting AR Game to educate kids about types of trash cans
+# WasteSorting_ARGame
+ Waste Sorting AR Game to educate kids
