@@ -195,6 +195,7 @@ GameObject:
   - component: {fileID: 534330937}
   - component: {fileID: 534330936}
   - component: {fileID: 534330935}
+  - component: {fileID: 534330939}
   m_Layer: 0
   m_Name: XR Origin
   m_TagString: Untagged
@@ -262,6 +263,26 @@ Transform:
   - {fileID: 1856291721}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &534330939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 534330934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33225fe949b3fa94ab7199e801597ada, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectPrefabs:
+  - {fileID: 2271697812779149491, guid: a73678f5ebe01ea479d7a4ce6d485e21, type: 3}
+  - {fileID: 3522477921245267953, guid: 9d949eadb3d06864fa4174b48087b928, type: 3}
+  - {fileID: 7509761987763667023, guid: c685d113ad3117b49b2487eeea9f606d, type: 3}
+  - {fileID: 1486740028265126432, guid: 074a9eb22c75b8a41b3804f95fad4f81, type: 3}
+  - {fileID: 396096323725444334, guid: 3f58d9aa3c7a2a64ab54ebd9f7f96331, type: 3}
+  - {fileID: 3606817093145413592, guid: 80c57dd0fb75d1c478944787c9a41580, type: 3}
+  spawnInterval: 2
 --- !u!1 &663976353
 GameObject:
   m_ObjectHideFlags: 0
