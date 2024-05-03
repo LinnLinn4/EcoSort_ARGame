@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public GameObject Panel2;
     public GameObject winPanel;
     public GameObject losePanel;
+    public GameObject howToPlayPanel;
     public GameObject bgMusic;
 
     private int expectedScoreToWin = 100; // Expected score required to win
@@ -48,27 +49,40 @@ public class GameManager : MonoBehaviour
 
     public void PlayBtn()
     {
-        Panel1.SetActive(true);
+        howToPlayPanel.SetActive(true);
     }
 
     public void NextBtn1()
     {
-        Panel1.SetActive(false);
-        Panel2.SetActive(true);
+        howToPlayPanel.SetActive(false);
+        Panel1.SetActive(true);
     }
 
     public void NextBtn2()
     {
         Panel1.SetActive(false);
+        Panel2.SetActive(true);
+    }
+
+    public void NextBtn3()
+    {
+        Panel1.SetActive(false);
         Panel2.SetActive(false);
         SceneManager.LoadSceneAsync(1);
     }
+
     public void BackBtn1()
     {
-        Panel1.SetActive(false);
+        howToPlayPanel.SetActive(false);
     }
 
     public void BackBtn2()
+    {
+        howToPlayPanel.SetActive(true);
+        Panel1.SetActive(false);
+    }
+
+    public void BackBtn3()
     {
         Panel1.SetActive(true);
         Panel2.SetActive(false);

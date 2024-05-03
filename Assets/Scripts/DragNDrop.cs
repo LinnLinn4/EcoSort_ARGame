@@ -88,12 +88,12 @@ public class DragNDrop : MonoBehaviour
     private void SetDraggingProperties(Rigidbody rb)
     {
         rb.useGravity = false;
-        rb.drag = 20;
+        rb.drag = 15;
     }
 
     private void SetFreeProperties(Rigidbody rb)
     {
         rb.useGravity = true;
-        rb.drag = 5;
+        rb.drag = 8;
     }
 }

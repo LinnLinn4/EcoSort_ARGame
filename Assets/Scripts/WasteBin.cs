@@ -5,13 +5,16 @@ using UnityEngine;
 public class WasteBin : MonoBehaviour
 {
     public string binType; // Type of bin (e.g., "Plastic", "Glass", "Paper")
-    private int correctDisposals;
-    private int targetCorrectDisposals = 12;
+    GameObject[] checkObjectCount;
+    // private int correctDisposals;
+    // private int targetCorrectDisposals = 12;
     
     
     private void Awake() 
     {
-        correctDisposals = 0;
+        //correctDisposals = 0;
+        checkObjectCount = GameObject.FindGameObjectsWithTag("movingObjects");
+        Debug.Log(checkObjectCount.Length);
     }
 
     void OnTriggerEnter(Collider other)
@@ -30,14 +33,22 @@ public class WasteBin : MonoBehaviour
                 GameManager.Instance.UpdateScore();
             }
 
-            correctDisposals++;
+            //correctDisposals++;
             // Destroy the waste object regardless of whether it's disposed correctly or not
             Destroy(wasteObject.gameObject);
 
-            if (correctDisposals == targetCorrectDisposals)
+            checkObjectCount = GameObject.FindGameObjectsWithTag("movingObjects");
+            if (checkObjectCount.Length == 0)
             {
                 GameManager.Instance.CheckGameResult();
             }
+
+
+
+            // if (correctDisposals == targetCorrectDisposals)
+            // {
+            //     GameManager.Instance.CheckGameResult();
+            // }
         }
     }
 }
