@@ -38,10 +38,10 @@ public class WasteBin : MonoBehaviour
             Destroy(wasteObject.gameObject);
 
             checkObjectCount = GameObject.FindGameObjectsWithTag("movingObjects");
-            if (checkObjectCount.Length == 0)
-            {
-                GameManager.Instance.CheckGameResult();
-            }
+            // if (checkObjectCount.Length == 0)
+            // {
+            //     GameManager.Instance.CheckGameResult();
+            // }
 
 
 

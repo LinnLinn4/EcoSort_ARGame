@@ -16,12 +16,11 @@ public class GameManager : MonoBehaviour
     public GameObject howToPlayPanel;
     public GameObject bgMusic;
 
-    private int expectedScoreToWin = 100; // Expected score required to win
+    //private int expectedScoreToWin = 100; // Expected score required to win
     public Text scoreText;
     public TMP_Text finalScoreText1;
     public TMP_Text finalScoreText2;
     private int currentScore; // Current score
-    
     
 
     void Awake()
@@ -97,33 +96,35 @@ public class GameManager : MonoBehaviour
     public void HomeBtn()
     {
         winPanel.SetActive(false);
-        losePanel.SetActive(false);
         SceneManager.LoadSceneAsync(0);
     }
 
     public void RetryBtn()
     {
         winPanel.SetActive(false);
-        losePanel.SetActive(false);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     
 
     //Function to check the game result
     public void CheckGameResult()
     {
-        if (currentScore >= expectedScoreToWin)
-        {
-            // Display "You Won" screen
-            finalScoreText1.text = "Your Score: " + currentScore.ToString();
-            winPanel.SetActive(true);
-            AudioHandler.Instance.WinSfx();
-        }
-        else
-        {
-            // Display "You Lose" screen
-            finalScoreText2.text = "Your Score: " + currentScore.ToString();
-            losePanel.SetActive(true);
-            AudioHandler.Instance.LoseSfx();
-        }
+        finalScoreText1.text = "Your Score: " + currentScore.ToString();
+        winPanel.SetActive(true);
+        AudioHandler.Instance.WinSfx();
+        // if (currentScore >= expectedScoreToWin)
+        // {
+        //     // Display "You Won" screen
+        //     finalScoreText1.text = "Your Score: " + currentScore.ToString();
+        //     winPanel.SetActive(true);
+        //     AudioHandler.Instance.WinSfx();
+        // }
+        // else
+        // {
+        //     // Display "You Lose" screen
+        //     finalScoreText2.text = "Your Score: " + currentScore.ToString();
+        //     losePanel.SetActive(true);
+        //     AudioHandler.Instance.LoseSfx();
+        // }
     }
 }

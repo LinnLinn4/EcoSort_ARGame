@@ -12,6 +12,7 @@ public class DragNDrop : MonoBehaviour
     private Vector3 dis;
     private float posX;
     private float posY;
+    private float posZ;
 
     private bool touched = false;
     private bool dragging = false;
@@ -47,9 +48,11 @@ public class DragNDrop : MonoBehaviour
                 previousPosition = toDrag.position;
                 toDragRigidbody = toDrag.GetComponent<Rigidbody>();
 
-                dis = Camera.main.WorldToScreenPoint(previousPosition);
-                posX = touch.position.x - dis.x;
-                posY = touch.position.y - dis.y;
+                // dis = Camera.main.WorldToScreenPoint(previousPosition);
+                // posX = touch.position.x - dis.x;
+                // posY = touch.position.y - dis.y;
+                // posZ = Input.GetTouch(0).position.z;
+                
 
                 SetDraggingProperties(toDragRigidbody);
 
@@ -61,19 +64,31 @@ public class DragNDrop : MonoBehaviour
         {
             dragging = true;
 
-            float posXNow = touch.position.x - posX;
-            float posYNow = touch.position.y - posY;
-            Vector3 curPos = new Vector3(posXNow, posYNow, dis.z);
-
-            if (toDragRigidbody != null)
+            Vector3 touchPosition = touch.position;
+            Ray ray = Camera.main.ScreenPointToRay(touchPosition);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit))
             {
-                Vector3 worldPos = Camera.main.ScreenToWorldPoint(curPos) - previousPosition;
-                worldPos = new Vector3(worldPos.x, worldPos.y, 0.0f);
-
-                toDragRigidbody.velocity = worldPos / (Time.deltaTime * 10);
+                // Update the position of the object based on the hit point
+                toDrag.position = hit.point;
             }
 
-            previousPosition = toDrag.position;
+            // float posXNow = touch.position.x - posX;
+            // float posYNow = touch.position.y - posY;
+            // float posZNow = Input.GetTouch(0).position.z;
+            // float deltaZ = posZNow - posZ;
+            // Vector3 curPos = new Vector3(posXNow, posYNow, dis.z+ deltaZ);
+
+            // if (toDragRigidbody != null)
+            // {
+            //     Vector3 worldPos = Camera.main.ScreenToWorldPoint(curPos) - previousPosition;
+            //     worldPos = new Vector3(worldPos.x, worldPos.y, worldPos.z);
+
+            //     toDragRigidbody.velocity = worldPos / (Time.deltaTime * 10);
+            //     posZ = posZNow;
+            // }
+
+            // previousPosition = toDrag.position;
         }
 
         if (dragging && (touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled))
@@ -88,7 +103,7 @@ public class DragNDrop : MonoBehaviour
     private void SetDraggingProperties(Rigidbody rb)
     {
         rb.useGravity = false;
-        rb.drag = 15;
+        rb.drag = 10;
     }
 
     private void SetFreeProperties(Rigidbody rb)

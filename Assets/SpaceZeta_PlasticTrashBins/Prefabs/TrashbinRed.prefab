@@ -120,7 +120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f16bffc7971c64147a5c7f77f0e2f413, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  binType: metal
+  binType: plastic
 --- !u!1 &3655041661194210085
 GameObject:
   m_ObjectHideFlags: 0
